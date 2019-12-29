@@ -14,4 +14,4 @@
 * User  User namespace 主要隔离了安全相关的标识符和属性，包括用户 ID、用户组 ID、root 目录、key 以及特殊权限。
 
 ## 测试代码
-`gcc -o uts uts.c`
+`gcc -o all allnamespace.c`
