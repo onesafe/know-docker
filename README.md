@@ -15,3 +15,29 @@
 
 ## 测试代码
 `gcc -o all allnamespace.c`
+
+## 使用ip命令和brctl命令模拟Docker的network namespace
+
+### 安装brctl命令
+```bash
+# centos7
+yum -y install bridge-utils
+
+# ubuntu16.04
+apt-get -y install bridge-utils
+```
+
+### 安装ip命令
+```bash
+# centos7
+yum -y install iproute2
+
+# ubuntu16.04
+apt-get -y install iproute2
+```
+
+### 模拟脚本
+`./simulateDockerNetNamespace.sh`
+
+### 清除模拟环境
+`./clearSimulateDockerNetNamespace.sh`
