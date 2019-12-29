@@ -18,6 +18,9 @@ char* const container_args[] = {
 int container_main(void *args)
 {
     printf("在容器进程中！\n");
+
+	// 设置容器的主机名
+	sethostname("container_one", 8);
     execv(container_args[0], container_args); // 执行/bin/bash   return 1;
 }
 
@@ -26,7 +29,7 @@ int main(int args, char *argv[])
     printf("程序开始\n");
 
     // clone 容器进程
-    int container_pid = clone(container_main, container_stack + STACK_SIZE, SIGCHLD, NULL);
+    int container_pid = clone(container_main, container_stack + STACK_SIZE, SIGCHLD | CLONE_NEWUTS | CLONE_NEWIPC | CLONE_NEWPID | CLONE_NEWNS | CLONE_NEWNET | CLONE_NEWUSER, NULL);
 
     // 等待容器进程结束
     waitpid(container_pid, NULL, 0);
